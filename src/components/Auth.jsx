@@ -1,11 +1,17 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+import AuthContext from '../store/authContext'
 
 const Auth = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [penName, setPenName] = useState('')
   const [register, setRegister] = useState(false)
+  const navigate = useNavigate()
+
+  const authCtx = useContext(AuthContext)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -17,7 +23,11 @@ const Auth = () => {
     }
 
     axios.post(register ? '/api/register' : '/api/login', body)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log('hit .then')
+        authCtx.login(res.data.token, res.data.exp, res.data.userId)
+        navigate('/home')
+      })
       .catch(err => alert(err.response.data))
   }
 

@@ -44,7 +44,7 @@ module.exports = {
         try {
             const {username, password} = req.body
             const foundUser = await User.findOne({where: {username}})
-
+            console.log()
             if(foundUser){
                 const isAuthenticated = bcrypt.compareSync(password, foundUser.hashedPass)
 

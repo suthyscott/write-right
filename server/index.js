@@ -8,6 +8,7 @@ const {Session} = require('./models/session')
 const {Project} = require('./models/project')
 const {ProjectType} = require('./models/projectType')
 const {sequelize} = require('./util/database')
+const { seedDatabase } = require('./util/seed')
 
 const {register, login} = require('./controllers/authCtrl')
 const {getAllUserProjects, addProject, getAllProjectTypes} = require('./controllers/projectCtrl')
@@ -40,7 +41,7 @@ app.post('/api/sessions', addSession)
 
 
 sequelize.sync()
-// sequelize.sync({force: true})
+// sequelize.sync({force: true}).then(() => seedDatabase())
     .then(() => {
         app.listen(SERVER_PORT, () => console.log(`Take us to warp ${SERVER_PORT}!`))
     })
