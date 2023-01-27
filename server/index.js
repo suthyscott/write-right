@@ -34,7 +34,7 @@ app.post('/api/login', login)
 
 app.get('/api/projects/:userId', getAllUserProjects)
 app.post('/api/projects', addProject)
-app.get('/api/projects/types', getAllProjectTypes)
+app.get('/api/types', getAllProjectTypes)
 
 app.get('/api/sessions/:userId', getAllUserSessions)
 app.post('/api/sessions', addSession)
