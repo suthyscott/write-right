@@ -1,14 +1,20 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { useContext } from "react"
+import { NavLink } from "react-router-dom"
+import AuthContext from "../store/authContext"
 
 const Header = () => {
-  return (
-    <nav>
-      <NavLink to='/'>Landing</NavLink>
-      <NavLink to='/home'>Home</NavLink>
-      <NavLink to='/add'>Add</NavLink>
-    </nav>
-  )
+    const { logout, token } = useContext(AuthContext)
+    return (
+        <nav>
+            {token && (
+                <>
+                    <NavLink to="/home">Home</NavLink>
+                    <NavLink to="/add">Add</NavLink>
+                    <button onClick={() => logout()}>Logout</button>
+                </>
+            )}
+        </nav>
+    )
 }
 
 export default Header
