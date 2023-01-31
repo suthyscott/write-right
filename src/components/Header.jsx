@@ -5,7 +5,7 @@ import AuthContext from "../store/authContext"
 const Header = () => {
     const { logout, token } = useContext(AuthContext)
     return (
-        <nav>
+        <nav className="bg-gray-500 flex align-center justify-evenly">
             {token && (
                 <>
                     <NavLink to="/home">Home</NavLink>
