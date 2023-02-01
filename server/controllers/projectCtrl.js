@@ -2,8 +2,16 @@ const { ProjectType } = require("../models/projectType")
 const {Project} = require('../models/project')
 
 module.exports = {
-    getAllUserProjects: (req, res) => {
+    getAllUserProjects: async(req, res) => {
         console.log("getAllUserProjects")
+        try {
+            const {userId} = req.params
+            const projects = await Project.findAll({where: {userId}})
+            res.status(200).send(projects)
+        } catch(err){
+            console.log(err)
+            res.sendStatus(400)
+        }
     },
     addProject: async (req, res) => {
         console.log("addProject")

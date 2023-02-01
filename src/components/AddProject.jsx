@@ -10,7 +10,7 @@ const AddProject = () => {
   const authCtx = useContext(authContext)
 
   useEffect(() => {
-    console.log('hit useEffect')
+    // console.log('hit useEffect')
     axios.get('/api/types')
       .then(res => {
         console.log(res.data)
@@ -32,7 +32,7 @@ const AddProject = () => {
       })
   }
 
-  console.log(selectedProjectType)
+  // console.log(selectedProjectType)
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <select value={selectedProjectType} onChange={e => setSelectedProjectType(e.target.value)}>
