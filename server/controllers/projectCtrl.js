@@ -25,6 +25,9 @@ module.exports = {
             res.sendStatus(400)
         }
     },
+    editProject: async (req, res) => {
+        console.log('hit editProject')
+    },
     getAllProjectTypes: async (req, res) => {
         console.log("getAllProjectTypes")
         try {

@@ -40,6 +40,7 @@ const AddSession = () => {
             .then(res => {
                 console.log(res.data)
                 setProjects(res.data)
+                setSelectedProjectId(res.data[0].id)
             })
     },[])
 
