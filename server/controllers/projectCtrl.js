@@ -27,6 +27,14 @@ module.exports = {
     },
     editProject: async (req, res) => {
         console.log('hit editProject')
+        try {
+            const {projectName, desc, id} = req.body
+            await Project.update({projectName, desc}, {where: {id}})
+            res.sendStatus(200)
+        } catch (err){
+            console.log(err)
+            res.sendStatus(400)
+        }
     },
     getAllProjectTypes: async (req, res) => {
         console.log("getAllProjectTypes")

@@ -11,8 +11,9 @@ const {sequelize} = require('./util/database')
 const { seedDatabase } = require('./util/seed')
 
 const {register, login} = require('./controllers/authCtrl')
-const {getAllUserProjects, addProject, getAllProjectTypes} = require('./controllers/projectCtrl')
+const {getAllUserProjects, addProject, getAllProjectTypes, editProject} = require('./controllers/projectCtrl')
 const {getAllUserSessions, addSession} = require('./controllers/sessionCtrl')
+const {isAuthorized} = require('./middleware/isAuthorized')
 
 
 const app = express()
@@ -35,6 +36,7 @@ app.post('/api/login', login)
 app.get('/api/projects/:userId', getAllUserProjects)
 app.post('/api/projects', addProject)
 app.get('/api/types', getAllProjectTypes)
+app.put('/api/projects', editProject)
 
 app.get('/api/sessions/:userId', getAllUserSessions)
 app.post('/api/sessions', addSession)

@@ -39,7 +39,7 @@ const Home = () => {
     })
 
     const projectDisplay = projects.map(proj => {
-        return <ProjectCard project={proj} key={proj.id}/>
+        return <ProjectCard project={proj} getAllUserProjects={getAllUserProjects} key={proj.id}/>
     })
     return (
         <main className="flex w-full">
