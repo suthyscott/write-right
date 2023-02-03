@@ -12,7 +12,7 @@ const { seedDatabase } = require('./util/seed')
 
 const {register, login} = require('./controllers/authCtrl')
 const {getAllUserProjects, addProject, getAllProjectTypes, editProject} = require('./controllers/projectCtrl')
-const {getAllUserSessions, addSession} = require('./controllers/sessionCtrl')
+const {getAllUserSessions, addSession, getSession} = require('./controllers/sessionCtrl')
 const {isAuthorized} = require('./middleware/isAuthorized')
 
 
@@ -40,6 +40,7 @@ app.put('/api/projects', editProject)
 
 app.get('/api/sessions/:userId', getAllUserSessions)
 app.post('/api/sessions', addSession)
+app.get('/api/session/:id', getSession)
 
 
 sequelize.sync()

@@ -7,6 +7,7 @@ import Header from  './components/Header'
 import {Routes, Route} from 'react-router-dom'
 import AuthContext from './store/authContext';
 import { Navigate } from 'react-router-dom';
+import SessionDisplay from './components/SessionDisplay'
 
 function App() {
   const {token} = useContext(AuthContext)
@@ -17,6 +18,7 @@ function App() {
         <Route index element={token ? <Navigate to='/home'/> : <Auth/>}/>
         <Route path='/home' element={token ? <Home/> : <Navigate to='/'/>}/>
         <Route path='/add' element={token ? <ToggleAdd/> : <Navigate to='/'/>}/>
+        <Route path='/sessionDisplay/:id' element={token ? <SessionDisplay/> : <Navigate to='/' />}/>
       </Routes>
      
     </div>

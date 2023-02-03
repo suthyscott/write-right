@@ -35,5 +35,22 @@ module.exports = {
             console.log(err)
             res.sendStatus(400)
         }
+    },
+    getSession: async (req, res) => {
+        try {
+            const {id} = req.params
+            const session = await Session.findOne(
+                {where: {id: +id},
+                include: [{
+                    model: Project,
+                    require: true
+                }]
+            })
+            res.status(200).send(session)
+
+        } catch(err) {
+            console.log(err)
+            res.sendStatus(400)
+        }
     }
 }

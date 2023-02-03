@@ -13,7 +13,7 @@ const Home = () => {
         axios
             .get(`/api/projects/${userId}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setProjects(res.data)
             })
             .catch(err => console.log(err))
@@ -23,7 +23,7 @@ const Home = () => {
         axios
             .get(`/api/sessions/${userId}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setSessions(res.data)
             })
             .catch(err => console.log(err))
