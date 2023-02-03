@@ -52,5 +52,19 @@ module.exports = {
             console.log(err)
             res.sendStatus(400)
         }
+    },
+    editSession: async (req, res) => {
+        try {
+            const {sessionId, projectId, notes, date, length} = req.body
+            await Session.update({projectId, notes, length, date}, {where: {id: sessionId}})
+            const updatedSession = await Session.findOne({where: {id: sessionId},
+            include:[{
+                model: Project
+            }]})
+            res.status(200).send(updatedSession)
+        } catch(err) {
+            console.log(err)
+            res.sendStatus(400)
+        }
     }
 }
